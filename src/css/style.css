@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: url('../images/background.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    color: #f5f0e1;
+    margin: 30px;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3.6rem;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+}
