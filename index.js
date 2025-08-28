@@ -1,62 +1,99 @@
-let player = {
-    nome: prompt("Bem-vindo(a)! Qual é o nome do seu personagem?"),
-    inventario: [],
-    vida: 100
-};
+const formInicio = document.getElementById('form-inicio');
+const nomeInput = document.getElementById('nome');
+const btnIniciar = document.getElementById('btn-iniciar'); 
 
-const origemPersonagem = parseInt(prompt(`
-    Escolha a origem do personagem:
+const escolhaOrigemInputs =  document.querySelectorAll('input[name="origem"]');
+const secaoEscolha = document.getElementById('origem');
+const secaoPerfil = document.querySelector('.perfil-personagem');
 
-    [1] - Taverna dos Magos Atrapalhados
-    [2] - Cidade das Mil Escadas
-    [3] - A Biblioteca Esquecida
-`));  
+const perfilTaverna = document.querySelector('.origem-taverna');
+const perfilEscadas = document.querySelector('.origem-mil-escadas');
+const perfilBiblioteca = document.querySelector('.origem-biblioteca');
 
-switch (origemPersonagem) {
-    case 1:
-        player.inventario.push("Colher de Madeira Encantada");
-        alert(`Desde pequeno(a), ${player.nome} viu mais explosões acidentais do que aniversários. Crescer na Taverna dos Magos Atrapalhados significava viver entre feitiços mal lançados e caldeirões transbordando de... mingau brilhante.`);
-        break;
+let inventario = document.getElementById('itens-inventario');
 
-    case 2:
-        player.inventario.push("Sandálias de Couro Gasto");
-        alert(`${player.nome} cresceu em uma cidade construída sobre montanhas. O segredo de sua resistência? Subir escadas. Sempre escadas. Milhares de degraus, dia após dia. Suas pernas eram praticamente armas de guerra.`);
-        break;
-    
-    case 3:
-        player.inventario.push("Livro em Branco");
-        alert(`Perdido(a) entre prateleiras infinitas, ${player.nome} passou a infância na Biblioteca Esquecida. Alguns livros sussurravam segredos, outros gritavam insultos. O mais estranho de todos estava vazio, mas parecia observá-lo(a).`);
-        break;
+const btnIniciarNarrativa = document.getElementById('btn-iniciar-narrativa');
 
-    default:
-        break;
-};
+const escolhaNarrativaInputs = document.querySelectorAll('input[name="escolha"]');
+const secaoNarrativa = document.getElementById('narrativa');
+const escolhaPlayer = document.querySelector('.escolha-player');
 
-const escolha = parseInt(prompt(`
-    Durante sua jornada, ${player.nome} encontra um viajante ferido na estrada. O que deseja fazer?
-    
-    [1] - Ajudar o viajante
-    [2] - Ignorar e seguir em frente
-    [3] - Roubar o viajante
-`));
+const ajudarViajante = document.querySelector('.ajudar');
+const ignorarViajante = document.querySelector('.ignorar');
+const roubarViajante = document.querySelector('.roubar'); 
 
-switch (escolha) {
-    case 1:
-        alert(`${player.nome} ajudou o viajante e ganhou uma Poção de Cura.`);
-        player.inventario.push("Poção de Cura");
-        break;
+const secaoStatus = document.querySelector('.status');
 
-    case 2:
-        alert(`${player.nome} seguiu sem olhar para trás... mas algo pareceu observá-lo na escuridão.`);
-        break;
+btnIniciar.addEventListener('click', function(event) {
+    event.preventDefault();
 
-    case 3:
-        alert(`${player.nome} saqueou o viajante e encontrou algumas moedas.`);
-        player.inventario.push("Moedas de Cobre");
-        break;
+    const nomePersonagem = nomeInput.value.trim();
 
-    default:
-        break;
-}
+    if (nomePersonagem) { 
+        formInicio.classList.add('esconder'); 
 
-console.log(player);
+        const main = document.querySelector('main');
+        const escolhaOrigem = document.querySelector('.escolha-origem');
+
+        escolhaOrigem.classList.remove('esconder'); 
+        main.classList.remove('esconder'); 
+
+        document.querySelectorAll('span.nome-personagem').forEach(span => { 
+            span.textContent = nomePersonagem;
+        })
+    }
+})
+
+escolhaOrigemInputs.forEach(input => {
+    input.addEventListener('change', function() {
+        secaoEscolha.classList.add('esconder');
+        secaoPerfil.classList.remove('esconder');
+
+        perfilTaverna.classList.add('esconder');
+        perfilEscadas.classList.add('esconder');
+        perfilBiblioteca.classList.add('esconder');
+
+        if (this.value === 'taverna-magos') {
+            perfilTaverna.classList.remove('esconder');
+            inventario.innerHTML = `<p>Colher de Madeira Encantada</p>`;
+        } else if (this.value === 'mil-escadas') {
+            perfilEscadas.classList.remove('esconder');
+            inventario.innerHTML = `<p>Sandálias de Couro Gasto</p>`;
+        } else if (this.value === 'biblioteca-esquecida') { 
+            perfilBiblioteca.classList.remove('esconder');
+            inventario.innerHTML = `<p>Livro em Branco</p>`;
+        }
+    })
+})
+
+btnIniciarNarrativa.addEventListener('click', () => {
+    secaoPerfil.classList.add('esconder');
+    secaoNarrativa.classList.remove('esconder');
+})
+
+escolhaNarrativaInputs.forEach(input => {
+    input.addEventListener('change', function() {
+        ajudarViajante.classList.add('esconder');
+        ignorarViajante.classList.add('esconder');
+        roubarViajante.classList.add('esconder');
+
+        if (this.value === 'ajudar-viajante') {
+            ajudarViajante.classList.remove('esconder');
+            inventario.insertAdjacentHTML('beforeend', `<p>Poção de Cura</p>`);
+
+            secaoNarrativa.classList.add('esconder');
+            secaoStatus.classList.remove('esconder');
+        } else if (this.value === 'ignorar-viajante') {
+            ignorarViajante.classList.remove('esconder');
+
+            secaoNarrativa.classList.add('esconder');
+            secaoStatus.classList.remove('esconder');
+        } else if (this.value === 'roubar-viajante') {
+            roubarViajante.classList.remove('esconder');
+            inventario.insertAdjacentHTML('beforeend', `<p>Moedas de Cobre</p>`);
+
+            secaoNarrativa.classList.add('esconder');
+            secaoStatus.classList.remove('esconder');
+        }
+    })
+})

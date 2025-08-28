@@ -9,9 +9,110 @@
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
+    <!-- O QUE FIZ (25.08): ADICIONEI UM FORM E ESTILIZEI ELE -->
+    <!-- O QUE FIZ (26.08): ADICIONEI UMA SEÇÃO COM AS ESCOLHA DA ORIGEM; NO MAIN COLOQUEI UMA SEÇÃO COM A HISTÓRIA DE CADA ORIGEM; ADICIONEI UMA SEÇÃO PARA O INVENTÁRIO; ESTILIZEI TUDO -->
+    <!-- O QUE EU FIZ (27.08) ADICIONEI A NARRATIVA -->
+
     <h1>A jornada Começa</h1>
     <p>Digite seu nome e faça escolhas que moldarão o destino do seu personagem.</p>
     <p><em>Dica:</em> mantenha coragem... nem sempre a decisão mais fácil é a melhor.</p>
+
+    <form class="form " id="form-inicio">
+        <label for="nome">Bem-vindo(a)! Qual é o nome do seu personagem?</label>
+        <input type="text" name="nome" id="nome">
+
+        <button class="btn-iniciar" type="submit" id="btn-iniciar">Iniciar</button>
+    </form>
+
+    <main class="main esconder">
+        <section class="escolha-origem esconder" id="origem"> 
+            <h2>Escolha a origem do personagem:</h2>
+
+            <label>
+                Taverna dos Magos Atrapalhados
+                <input name="origem" type="radio" id="taverna-magos" value="taverna-magos">
+            </label> <br>
+
+            <label>
+                Cidade das Mil Escadas
+                <input name="origem" type="radio" id="mil-escadas" value="mil-escadas">
+            </label> <br>
+
+            <label for="biblioteca-esquecida">
+                A Biblioteca Esquecida
+                <input name="origem" type="radio" id="biblioteca-esquecida" value="biblioteca-esquecida">
+            </label>
+        </section>
+
+        <section class="perfil-personagem esconder" id="origem-personagem">
+            <div class="origem-taverna esconder">
+                <h2>A Taverna dos Magos Atrapalhados</h2>
+                <p>
+                    Desde pequeno(a), <span class="nome-personagem"></span> viu mais explosões acidentais do que aniversários. Crescer na Taverna dos Magos Atrapalhados significava viver entre feitiços mal lançados e caldeirões transbordando de... mingau brilhante.
+                </p>
+            </div>
+
+            <div class="origem-mil-escadas esconder">
+                <h2>A Cidade das Mil Escadas</h2>
+                <p>
+                    <span class="nome-personagem"></span> cresceu em uma cidade construída sobre montanhas. O segredo de sua resistência? Subir escadas. Sempre escadas. Milhares de degraus, dia após dia. Suas pernas eram praticamente armas de guerra.
+                </p>
+            </div>
+
+            <div class="origem-biblioteca esconder">
+                <h2>A Biblioteca Esquecida</h2>
+                <p>
+                    Perdido(a) entre prateleiras infinitas, <span class="nome-personagem"></span> passou a infância na Biblioteca Esquecida. Alguns livros sussurravam segredos, outros gritavam insultos. O mais estranho de todos estava vazio, mas parecia observá-lo(a).
+                </p>
+            </div>
+
+            <button class="btn-iniciar" id="btn-iniciar-narrativa">Iniciar jogo</button>
+        </section>
+
+        <section class="narrativa esconder" id="narrativa">
+            <h2>O Viajante Ferido</h2>
+
+            <p>Durante sua jornada, <span class="nome-personagem"></span> encontra um viajante ferido na estrada. O que deseja fazer?</p>
+
+            <label for="ajudar-viajante">Ajudar o viajante</label>
+            <input type="radio" name="escolha" id="ajudar-viajante" value="ajudar-viajante"> <br>
+            
+            <label for="ignorar-viajante">Ignorar e seguir em frente</label>
+            <input type="radio" name="escolha" id="ignorar-viajante" value="ignorar-viajante"> <br>
+            
+            <label for="roubar-viajante">Roubar o viajante</label>
+            <input type="radio" name="escolha" id="roubar-viajante" value="roubar-viajante">
+        </section>
+
+        <section class="escolha-player esconder">
+            <div class="ajudar esconder">
+                <h2>Que humilde!</h2>
+                <p><span class="nome-personagem"></span> ajudou o viajante e ganhou uma <strong>Poção de Cura</strong>.</p>
+            </div>
+
+            <div class="ignorar esconder">
+                <h2>Por quê?</h2>
+                <p><span class="nome-personagem"></span> seguiu sem olhar para trás... mas algo pareceu <strong>observá-lo</strong> na escuridão.</p>
+            </div>
+
+            <div class="roubar esconder">
+                <h2>Tenho medo...</h2>
+                <p><span class="nome-personagem"></span> saqueou o viajante e encontrou <strong>algumas moedas</strong>.</p>
+            </div>
+        </section>
+
+        <section class="status esconder">
+            <h2>Você chegou ao final da aventura!</h2>
+            <p>Muitíssimo obrigada por participar! Aguarde pelas próximas atualizações :D</p>
+        </section>
+    </main>
+    
+    <section class="inventario" id="inventario">
+        <h2>Inventário</h2>
+
+        <div id="itens-inventario"></div>
+    </section>
+    
 
     <script src="index.js"></script>
 </body>
