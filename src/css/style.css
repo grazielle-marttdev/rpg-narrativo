@@ -1,162 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 body {
-    position: relative;
-    font-family: 'Cormorant Garamond', serif;
-    background: url('../images/background.png') no-repeat center center;
+    font-family: "Cinzel", serif;
+    background: url('../images/background.png') no-repeat center center fixed;
     background-size: cover;
-    color: #f5f0e1;
-    height: 100vh;
-    margin: 30px;
 }
 
-h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 3.6rem;
-    margin-bottom: 30px;
-}
-
-h2 {
-    font-size: 2.4rem;
+.header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
     margin-bottom: 20px;
 }
 
-p {
-    font-size: 1.6rem;
-    line-height: 2.5rem;
-}
-
-label, input {
-    font-size: 1.6rem;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 400px;
-    background-color: #1b1b1b;
-    padding: 30px;
-    margin: 30px auto;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.form input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.btn-iniciar {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    background-color: #025159;
-    color: #f5f0e1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-}
-
-.btn-iniciar:hover {
-    background-color: #037a8c;
-}
-
-.escolha-origem label, .origem input {
-    cursor: pointer;
-}
-
-.escolha-origem input {
-    margin: 0 8px 20px;
-    transform: scale(1.2);
-}
-
-main {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #1b1b1b;
-    padding: 30px;
-    margin-top: 40px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.perfil-personagem p {
-    text-align: justify;
-}
-
-.perfil-personagem .btn-iniciar {
-    margin-top: 15px;
-    width: 100%;
-}
-
-.inventario {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-
-    background-color: #1b1b1b;
-    padding: 20px;
-    border-radius: 10px;
+h1 {
     text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.narrativa p {
-    margin-bottom: 15px;
-}
-
-.narrativa input {
-    margin: 0 8px 20px;
-    transform: scale(1.2);
-}
-
-.form.esconder {
-    display: none;
-}
-
-.main.esconder {
-    display: none;
-}
-
-.escolha-origem.esconder {
-    display: none;
-}
-
-.perfil-personagem.esconder {
-    display: none;
-}
-
-.origem-taverna.esconder {
-    display: none;
-}
-.origem-mil-escadas.esconder {
-    display: none;
-}
-.origem-biblioteca.esconder {
-    display: none;
-}
-
-.narrativa.esconder {
-    display: none;
-}
-
-.escolha-player.esconder {
-    display: none;
-}
-
-.ajudar.esconder {
-    display: none;
-}
-.ignorar.esconder {
-    display: none;
-}
-.roubar.esconder {
-    display: none;
-}
-
-.status.esconder {
-    display: none;
+    color: #fff;
 }
