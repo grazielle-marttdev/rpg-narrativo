@@ -14,7 +14,6 @@ Função que calcula o ataque total dos inimigos (reduce).
 Função que retorna apenas nomes dos inimigos (map).
 
 */
-const divInformacoes = document.getElementById('informacoes');
 
 const inimigos = [
     { nome: "Alaric, o Errante", hp: 120, ataque: 18 },
