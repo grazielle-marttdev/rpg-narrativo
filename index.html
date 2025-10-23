@@ -1,18 +1,36 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafios Semanais - RPG Narrativo | Praticando JavaScript</title>
 
+    <link rel="stylesheet" href="src/css/reset.css">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
     <header class="header">
-        <h1>RPG Narrativo | Praticando JavaScript</h1>
+        <h1>RPG Narrativo</h1>
     </header>
+    
+    <main class="game-container">
+        
+        <section class="game-screen">
+            <div id="narrative-box" class="narrative-box"></div>
 
-    <script src="personagem-atributos.js"></script>
-    <script src="sistema-inimigos-filtros.js"></script>
+            <div id="actions-box" class="actions-box"></div>
+        </section>
+
+        <aside class="sidebar">
+            <h2>Seu Personagem</h2>
+            
+            <div id="player-status"></div>
+            <div class="inventory-display" id="inventory-display"></div>
+        </aside>
+    </main>
+
+    <script src="src/js/gameData.js"></script>
+    <script src="src/js/main.js"></script>
 </body>
 </html>
