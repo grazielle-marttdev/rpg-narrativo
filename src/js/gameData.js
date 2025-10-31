@@ -37,5 +37,13 @@ const story = {
     "reward_offering": {
         narrative: "A aventura começa aqui... Você se encontra em uma encruzilhada sombria, a floresta densa à sua frente e um caminho de pedras desgastadas à sua direita. De repente, uma figura encapuzada surge das sombras, oferecendo-lhe uma escolha por ter chegado tão longe. 'Escolha sabiamente, viajante, pois estas recompensas moldarão seu destino.'<br><br>As recompensas disponíveis são:",
         rewards: ["Poção de Cura", "Amuleto da Sorte", "Pergaminho Antigo"]
+    },
+    "resting_after_combat": {
+        narrative: "Depois de algumas horas de caminhada pela floresta, você ouve um barulho estranho vindo de trás de uma moita. De repente, uma Arqueira Sombria salta para fora, pronta para atacar! <br><br>Após um combate intenso, você sai vitorioso, mas exausto. Você encontra um local seguro para descansar e recuperar suas forças.",
+        enemy: enemies[2],
+        choices: [
+            { text: "Descansar", action: "descansar" },
+            { text: "Interromper descanso", action: "interromperDescanso" }
+        ]
     }
 }

@@ -63,6 +63,7 @@ function listRewards() {
 
 function displayRewardChoices() {
     const rewardScene = story.reward_offering;
+    const restScene = story.resting_after_combat;
     updateNarrative(rewardScene.narrative);
 
     clearActions();
@@ -79,13 +80,80 @@ function displayRewardChoices() {
             receiveRewards(reward);
             listRewards();
             
-            updateNarrative(`Você pegou a ${reward}.`); // Atualiza a narrativa após a escolha
+            updateNarrative(restScene.narrative);
             clearActions(); // Limpa as opções após a escolha
+            
+            attack(restScene.enemy, gameState.player);
+            displayChoicesForRest(); // Atualiza a narrativa após a escolha
         });
         actionsBox.appendChild(button);
     });
 }
 
+// Variável para saber se o jogador está descansando
+let isResting = false;
+let restInterval = null;
+
+function startResting() {
+    if (isResting) return; // Já está descansando
+
+    isResting = true;
+
+    // Verifica se o jogador tem uma Poção de Cura
+    if (gameState.inventory.includes("Poção de Cura")) {
+        heal(gameState.player, 20);
+        console.log("Você usou a Poção de Cura durante o descanso");
+    }
+    
+    // Mensagem após 3 segundos
+    setTimeout(() => {
+        displayEventMessage("A brisa fria te acalma… +1 de vida");
+    }, 3000);
+
+    // Regenerar HP a cada 5 segundos
+    restInterval = setInterval(() => {
+        if (gameState.player.hp < 150) {
+            heal(gameState.player, 1);
+        } 
+    }, 5000);
+}
+
+function displayEventMessage(message) {
+    const eventMessageDiv = document.getElementById('event-message');
+    eventMessageDiv.innerHTML = `<p>${message}</p>`;
+}
+
+function stopResting() {
+    clearInterval(restInterval);
+
+    isResting = false;
+    updateNarrative("Seu descanso foi interrempido. Agora você está pronto para continuar a aventura!");
+    updateUI();
+}
+
+function displayChoicesForRest() {
+    const restScene = story.resting_after_combat;
+    clearActions();
+
+    const actionsBox = document.getElementById('actions-box');
+    
+    restScene.choices.forEach(choice => {
+        const button = document.createElement('button');
+        button.textContent = choice.text;
+        button.classList.add('action-button');
+
+        button.addEventListener('click', () => {
+            if (choice.action === 'descansar') {
+                startResting();
+            } else if (choice.action === "interromperDescanso") {
+                stopResting();
+                clearActions();
+                displayEventMessage(""); // Limpa a mensagem de evento
+            }
+        })
+        actionsBox.appendChild(button);
+    })
+}
 
 function updateUI() {
     if (!gameState.player) return;
@@ -112,5 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Jogo iniciado!");
     updateUI();
     displayRewardChoices(); // Chama a função para exibir a narrativa e as escolhas
-    
 });

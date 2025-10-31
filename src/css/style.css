@@ -42,7 +42,8 @@ body {
     margin-bottom: 20px;
 }
 
-.game-screen .narrative-box p {
+.game-screen .narrative-box p,
+.game-screen .event-message p {
     font-size: 1.2rem;
     color: #fff;
 }
@@ -74,7 +75,7 @@ body {
     flex-direction: column;
     gap: 20px;
     max-width: 768px;
-    height: 353px;
+    min-height: 353px;
     background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro e semi-transparente */
     color: #fff;
     padding: 15px;
