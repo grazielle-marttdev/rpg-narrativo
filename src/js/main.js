@@ -107,6 +107,7 @@ function startResting() {
     
     // Mensagem após 3 segundos
     setTimeout(() => {
+        heal(gameState.player, 1);
         displayEventMessage("A brisa fria te acalma… +1 de vida");
     }, 3000);
 
